@@ -1,16 +1,18 @@
 /* global jest, describe, it, expect */
 jest.dontMock('object-assign');
+jest.dontMock('react-addons-test-utils');
+jest.dontMock('react-dom');
 jest.dontMock('../ContentPage.js');
-jest.dontMock('{YourPath}/ReactRouterContext.js');
+jest.dontMock('../../../../test_core/ReactRouterContext.js');
 
-const React = require('react/addons');
+const ReactDOM = require('react-dom');
+const React = require('react');
+const TestUtils = require('react-addons-test-utils');
+const reactRouterContext = require('../../../../test_core/ReactRouterContext.js');
 let ContentPage = require('../ContentPage.js');
-const ReactRouterContext = require('{YourPath}/ReactRouterContext.js');
-const TestUtils = React.addons.TestUtils;
 
 describe('ContentPage', function cb() {
-  it('should set header with correct label for each field, plus an empty header for actions', function cbIt() {
-    const film = {
+  const film = {
       content: {
         title: 'Pulp fiction',
         production: {
@@ -47,11 +49,17 @@ describe('ContentPage', function cb() {
       trailer_id: 77789,
     };
 
-    ContentPage = ReactRouterContext(ContentPage, { onSetTitle: function cb () {} });
-    let contentPage = TestUtils.renderIntoDocument(<ContentPage film={film} trailer={trailer}/>);
-    contentPage = React.findDOMNode(contentPage);
+    const routeContext = { 
+      onSetTitle: function cbContext() {}, 
+      trailer,
+      film
+    };
 
-    const headers = [].slice.call(contentPage.querySelectorAll('h1')).map(h => h.textContent);
-    expect(headers).toEqual(['Pulp fiction']);
+  it('should set header with correct label for each field, plus an empty header for actions', function cbIt() {
+    ContentPage = reactRouterContext(ContentPage, routeContext);
+    const contentPage = TestUtils.renderIntoDocument(<contextContentPage film={film} trailer={trailer}/>);
+    const h1 = ReactDOM.findDOMNode(contentPage, 'h1');
+    expect(ReactDOM.findDOMNode(h1).textContent).toBe('Pulp fiction');
+
   });
 });
