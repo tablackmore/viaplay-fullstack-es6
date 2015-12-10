@@ -48,7 +48,7 @@ describe('ContentPage', function cb() {
     let contentPage = TestUtils.renderIntoDocument(<ContentPage film={fields}/>);
     contentPage = React.findDOMNode(contentPage);
 
-    const headers = [].slice.call(contentPage.querySelectorAll('thead th')).map(h => h.textContent);
-    expect(headers).toEqual(['#', 'Title', 'Creation date', '']);
+    const headers = [].slice.call(contentPage.querySelectorAll('h1')).map(h => h.textContent);
+    expect(headers).toEqual(['Pulp fiction']);
   });
 });
