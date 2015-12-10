@@ -1,8 +1,11 @@
 /* global jest, describe, it, expect */
+jest.dontMock('object-assign');
 jest.dontMock('../ContentPage.js');
+jest.dontMock('{YourPath}/ReactRouterContext.js');
 
 const React = require('react/addons');
-const ContentPage = require('../ContentPage.js');
+let ContentPage = require('../ContentPage.js');
+const ReactRouterContext = require('{YourPath}/ReactRouterContext.js');
 const TestUtils = React.addons.TestUtils;
 
 describe('ContentPage', function cb() {
@@ -44,6 +47,7 @@ describe('ContentPage', function cb() {
       trailer_id: 77789,
     };
 
+    ContentPage = ReactRouterContext(ContentPage, { onSetTitle: function(){} });
     let contentPage = TestUtils.renderIntoDocument(<ContentPage film={film} trailer={trailer}/>);
     contentPage = React.findDOMNode(contentPage);
 
