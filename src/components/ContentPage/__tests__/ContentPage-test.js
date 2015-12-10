@@ -38,8 +38,7 @@ describe('ContentPage', function cb() {
             title: 'horror',
           }],
         },
-      },
-    };
+      };
 
     const trailer = {
       trailer_id: 77789,
