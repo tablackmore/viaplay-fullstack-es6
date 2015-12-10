@@ -18,7 +18,7 @@ function getFilm(name) {
       if (product && trailer.trailers && trailer.trailers.trailer) {
         resolve({
           product,
-          trailer: trailer.trailers.trailer[0]
+          trailer: trailer.trailers.trailer[0],
         });
       } else {
         reject(new Error('Incomplete data'));
