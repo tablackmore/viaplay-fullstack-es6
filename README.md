@@ -1,6 +1,6 @@
 ## Viaplay fullstack assignment
 
-I created this using react starter kit as a starting point. I was looking for an isomorphic/universal boilerplate and thought it looked quite good.
+I created this using [react starter kit](http://www.reactstarterkit.com/) as a starting point. I was looking for an isomorphic/universal boilerplate and thought it looked quite good.
 It has a good tool chain set up and a strategy for scss and file structuring. I choose this boilerlate as I understand you work with ecmascript 2015 and I wanted to demonstrate I can do that too.
 
 I used airbnbs ecmascript2015 and react javascript style settings in my eslintrc file.
@@ -21,11 +21,11 @@ $ npm start                     # Compile and launch
 The browser will then open automatically. 
 The start up page http://localhost:3000 should display viaplays standard 404 page. Renedered with react via this service.
 
-To see some content navigate to http://localhost:3000/web-se/film/tusk-2104 or similar url. Replacing the film at the end with any film path from viapla site.
+To see some content navigate to http://localhost:3000/web-se/film/tusk-2104 or similar url. Replacing the film at the end with any film path from viaplay site.
 
 ## Files worked on
 
-Given that this is taken from a boilerplate there are lots of files not written by me. I have triedto remove as many as possible that don't relate to the project. The main files I've worked on are in the src/components/*, src/routes.js, src/server.js, data/*.  
+Given that this is taken from a boilerplate there are lots of files not written by me. I have triedto remove as many as possible that don't relate to the project. The main files I've worked on are in the [src/components/*](https://github.com/tablackmore/viaplay-fullstack-es6/tree/master/src/components), [src/routes.js](https://github.com/tablackmore/viaplay-fullstack-es6/tree/master/src/routes.js), [src/server.js](https://github.com/tablackmore/viaplay-fullstack-es6/tree/master/src/server.js), [src/data/filmInfo.js](https://github.com/tablackmore/viaplay-fullstack-es6/tree/master/src/data/filmInfo.js).  
 
 ## Things to do
 
