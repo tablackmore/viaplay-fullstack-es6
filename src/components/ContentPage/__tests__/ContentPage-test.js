@@ -47,7 +47,7 @@ describe('ContentPage', function cb() {
       trailer_id: 77789,
     };
 
-    ContentPage = ReactRouterContext(ContentPage, { onSetTitle: function(){} });
+    ContentPage = ReactRouterContext(ContentPage, { onSetTitle: function cb () {} });
     let contentPage = TestUtils.renderIntoDocument(<ContentPage film={film} trailer={trailer}/>);
     contentPage = React.findDOMNode(contentPage);
 
