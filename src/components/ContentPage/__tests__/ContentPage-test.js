@@ -8,7 +8,6 @@ const TestUtils = React.addons.TestUtils;
 describe('ContentPage', function cb() {
   it('should set header with correct label for each field, plus an empty header for actions', function cbIt() {
     const film = {
-      film: {
         content: {
           title: 'Pulp fiction',
           production: {
@@ -46,7 +45,7 @@ describe('ContentPage', function cb() {
       trailer_id: 77789,
     };
 
-    let contentPage = TestUtils.renderIntoDocument(<ContentPage film={fields} trailer={trailer}/>);
+    let contentPage = TestUtils.renderIntoDocument(<ContentPage film={film} trailer={trailer}/>);
     contentPage = React.findDOMNode(contentPage);
 
     const headers = [].slice.call(contentPage.querySelectorAll('h1')).map(h => h.textContent);
