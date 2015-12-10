@@ -1,4 +1,4 @@
-/* global jest, describe, it */
+/* global jest, describe, it, expect */
 jest.dontMock('../ContentPage.js');
 
 const React = require('react/addons');
@@ -37,9 +37,9 @@ describe('ContentPage', function cb() {
           }, {
             href: 'http://somesite.com/horror',
             title: 'horror',
-          }]
-        }
-      }
+          }],
+        },
+      },
     };
 
     let contentPage = TestUtils.renderIntoDocument(<ContentPage film={fields}/>);
