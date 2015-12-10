@@ -69,7 +69,7 @@
     "unmockedModulePathPatterns": [
       "fbjs",
       "react",
-      "react-dom",
+      "react-dom"
     ]
   },
   "scripts": {
