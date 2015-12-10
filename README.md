@@ -27,7 +27,7 @@ To see some content navigate to http://localhost:3000/web-se/film/tusk-2104 or s
 
 If I was going to continue with this I would probably split the content page down into a few more components. 
 
-Add an integration test for retrieving data from the server and combining with react controls. At present only the ContentPage react controller is unit tested. 
+Add an integration test for retrieving data from the server and combining with react controls. At present only the ContentPage react controller is fully unit tested. 
 
 The data collection file filmInfo.js could be restructured to be a little more generic and fit into the flux way of doing things.
 
