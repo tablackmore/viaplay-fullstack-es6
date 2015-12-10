@@ -49,4 +49,5 @@ server.get('*', async (req, res, next) => {
 server.listen(port, () => {
   /* eslint-disable no-console */
   console.log(`The server is running at http://localhost:${port}/`);
+  console.log(`Test url http://localhost:${port}/web-se/film/tusk-2014`);
 });
