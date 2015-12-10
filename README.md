@@ -5,7 +5,7 @@ It has a good tool chain set up and a strategy for scss and file structuring. I 
 
 I used airbnbs ecmascript2015 and react javascript style settings in my eslintrc file.
 
-I tried out the ecmascript 7 async await functionality for collecting the data from the server. See src/data/filmInfo.js.
+I tried out the ecmascript 7 async await functionality for collecting the data from the server. See [src/data/filmInfo.js](https://github.com/tablackmore/viaplay-fullstack-es6/tree/master/src/data/filmInfo.js).
 
 ## Getting started
 
