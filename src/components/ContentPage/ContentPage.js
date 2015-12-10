@@ -9,19 +9,23 @@ class ContentPage extends Component {
   };
 
   static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired,
+    onSetTitle: PropTypes.func,
   };
 
   componentWillMount() {
-    this.context.onSetTitle(this.props.film.content.title);
+    if (this.context.onSetTitle) {
+      this.context.onSetTitle(this.props.film.content.title);
+    }
   }
 
   genreNodes(genres) {
     if (genres) {
       const returnValue = [];
+      let i = 0;
       for (const genre of genres) {
-        returnValue.push(<a href={genre.href} itemProp="genre"> {genre.title} </a>);
-        returnValue.push(<span className="slash">/</span>);
+        returnValue.push(<a key={'genre-' + i} href={genre.href} itemProp="genre">{genre.title}</a>);
+        returnValue.push(<span key={'genre-span' + i} className="slash">/</span>);
+        i++;
       }
       returnValue.pop(); // remove the last slash
       return returnValue;
@@ -31,9 +35,11 @@ class ContentPage extends Component {
   peopleNodes(people) {
     if (people) {
       const returnValue = [];
+      let i = 0;
       for (const person of people) {
-        returnValue.push(<a href={'/search?query=&quot;' + person}> {person} </a>);
-        returnValue.push(<span>, </span>);
+        returnValue.push(<a key={'person-' + i} href={'/search?query=&quot;' + person}>{person}</a>);
+        returnValue.push(<span key={'person-span-' + i}>, </span>);
+        i++;
       }
       returnValue.pop(); // remove the last comma
       return returnValue;
@@ -90,12 +96,12 @@ class ContentPage extends Component {
                         </p>
                       </div>
                       <div className="country">
-                        <h2 onClick={this.test}>Land</h2>:
-                        <p> {this.props.film.content.production.country}</p>
+                        <h2>Land</h2>:
+                        <p>{this.props.film.content.production.country}</p>
                       </div>
                     </div>
                     <span className="flag">hd</span>
-                    <span className="flag">{this.props.film.content.parentalRating}</span>
+                    <span className="flag rating">{this.props.film.content.parentalRating}</span>
                     <div className="group">
                       <a href data-action="https://star2.viaplay.se/setStar/pcdash-se/V51705/{starred}" data-tooltip-default="Stjärnmärk" data-tooltip-active="Ta bort stjärnmärkning" className="icon starred ">
                         <span />
