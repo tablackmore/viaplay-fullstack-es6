@@ -8,6 +8,9 @@ const TestUtils = React.addons.TestUtils;
 describe('ContentPage', function cb() {
   it('should set header with correct label for each field, plus an empty header for actions', function cbIt() {
     const fields = {
+      trailer: {
+        trailer_id: 77789,
+      },
       film: {
         content: {
           title: 'Pulp fiction',
