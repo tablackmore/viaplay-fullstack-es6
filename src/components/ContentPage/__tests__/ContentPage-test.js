@@ -1,17 +1,15 @@
-/* global jest, describe, it, expect */
-jest.dontMock('object-assign');
+/* global jest, describe, it, beforeEach, expect */
 jest.dontMock('react-addons-test-utils');
 jest.dontMock('react-dom');
 jest.dontMock('../ContentPage.js');
-jest.dontMock('../../../../test_core/ReactRouterContext.js');
 
-const ReactDOM = require('react-dom');
 const React = require('react');
+const ReactDOM = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
-const reactRouterContext = require('../../../../test_core/ReactRouterContext.js');
-let ContentPage = require('../ContentPage.js');
+const ContentPage = require('../ContentPage.js');
 
 describe('ContentPage', function cb() {
+  let contentPageDOM;
   const film = {
     content: {
       title: 'Pulp fiction',
@@ -49,16 +47,59 @@ describe('ContentPage', function cb() {
     trailer_id: 77789,
   };
 
-  const routeContext = {
-    onSetTitle: function cbContext() {},
-    trailer,
-    film,
-  };
+  beforeEach(function cbBeforeEach() {
+    const contentPage = TestUtils.renderIntoDocument(<ContentPage film={film} trailer={trailer}/>);
+    contentPageDOM = ReactDOM.findDOMNode(contentPage);
+  });
 
-  it('should set header with correct label for each field, plus an empty header for actions', function cbIt() {
-    ContentPage = reactRouterContext(ContentPage, routeContext);
-    const contentPage = TestUtils.renderIntoDocument(<contextContentPage film={film} trailer={trailer}/>);
-    const h1 = ReactDOM.findDOMNode(contentPage, 'h1');
-    expect(ReactDOM.findDOMNode(h1).textContent).toBe('Pulp fiction');
+  it('should set an h1 with the value of the passed object', function cbIt() {
+    const h1 = contentPageDOM.querySelector('h1');
+    expect(h1.textContent).toBe('Pulp fiction');
+  });
+
+  it('should set an set the iframe src with the value of the passed object', function cbIt() {
+    const iframe = contentPageDOM.querySelector('iframe');
+    expect(iframe.src).toBe('//v.traileraddict.com/77789');
+  });
+
+  it('should set the actors paragraph with the value of the passed object', function cbIt() {
+    const actorsParagraph = contentPageDOM.querySelector('.people-list.actors p');
+    expect(actorsParagraph.textContent).toBe('Fred Perry, Tom Blackmore');
+  });
+
+  it('should set the directors with the value of the passed object', function cbIt() {
+    const directorsParagraph = contentPageDOM.querySelector('.people-list.directors p');
+    expect(directorsParagraph.textContent).toBe('Inga Ivardsson');
+  });
+
+  it('should set the genre paragraph with the value of the passed object', function cbIt() {
+    const genreSpan = contentPageDOM.querySelector('.genre.divider');
+    expect(genreSpan.textContent).toBe('comedy/horror');
+  });
+
+  it('should set the year with the value of the passed object', function cbIt() {
+    const yearSpan = contentPageDOM.querySelector('.year.divider span');
+    expect(yearSpan.textContent).toBe('1997');
+  });
+
+  it('should set the country with the value of the passed object', function cbIt() {
+    const countryParagraph = contentPageDOM.querySelector('.country p');
+    expect(countryParagraph.textContent).toBe('USA');
+  });
+
+  it('should set the parentRating with the value of the passed object', function cbIt() {
+    const parentalRating = contentPageDOM.querySelector('.flag.rating');
+    expect(parentalRating.textContent).toBe('15');
+  });
+
+  it('should set the synopsis with the value of the passed object', function cbIt() {
+    const synopsis = contentPageDOM.querySelector('.synopsis');
+    expect(synopsis.textContent).toBe('crazy violent mad');
+  });
+
+  it('should set up the imdb elements correctly', function cbIt() {
+    const imdbLink = contentPageDOM.querySelector('.imdb-link');
+    expect(imdbLink.href).toBe('http://imdb.org/test');
+    expect(imdbLink.textContent).toBe('4.5 från 5679 användare');
   });
 });
